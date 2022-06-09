@@ -6,7 +6,11 @@ function computerPlay() {
 }
 
 function oneRound(playerSelection, computerSelection) {
-  if (rps.toLowerCase() === playerSelection.toLowerCase()) {
-  }
-  return;
+  rps.forEach((element) => {
+    if (element.toLowerCase() === playerSelection.toLowerCase()) {
+      console.log(element);
+    }
+  });
 }
+
+let play = oneRound("paper", computerPlay());
