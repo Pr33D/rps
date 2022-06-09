@@ -1,4 +1,6 @@
 let rps = ["Rock", "Paper", "Scissors"];
+let wins = 0;
+let looses = 0;
 
 function computerPlay() {
   let chance = Math.floor(Math.random() * 3);
@@ -8,7 +10,6 @@ function computerPlay() {
 
 function oneRound(playerSelection, computerSelection) {
   let playerChoice = "";
-  let result = "";
   rps.forEach((element) => {
     if (element.toLowerCase() === playerSelection.toLowerCase()) {
       playerChoice = element;
@@ -17,25 +18,34 @@ function oneRound(playerSelection, computerSelection) {
   console.log("You show: " + playerChoice);
   if (playerChoice == computerSelection) {
     console.log("Draw! Try again.");
-    return 0;
+    return;
   } else if (
     (playerChoice == "Rock" && computerSelection == "Scissors") ||
     (playerChoice == "Paper" && computerSelection == "Rock") ||
     (playerChoice == "Scissors" && computerSelection == "Paper")
   ) {
     console.log(`You win! ${playerChoice} beats ${computerSelection}`);
-    return 1;
+    return wins++;
   } else {
     console.log(`You lose! ${computerSelection} beats ${playerChoice}`);
-    return -1;
+    return looses++;
   }
 }
 
 function game(rounds) {
-  let points = 0;
   for (let i = 0; i < rounds; i++) {
     let choose = prompt("Rock, Paper or Scissors?");
     let result = oneRound(choose, computerPlay());
-    points += result;
+    console.log(wins + "won & " + looses + "lost");
+  }
+  if (wins > looses) {
+    console.log("You won the hole game!");
+  } else if (looses > wins) {
+    console.log("You lost this game!");
+  } else {
+    console.log("Draw - Try again :)");
   }
 }
+
+let howManyRounds = prompt("How many Rounds?");
+let playGame = game(howManyRounds);
