@@ -1,7 +1,11 @@
 body {
-  margin: 0;
+  margin: 100px 0 0 0;
   display: flex;
   justify-content: center;
+  text-align: center;
+}
+div {
+  padding: 10px;
 }
 
 #result {
@@ -12,10 +16,22 @@ body {
 
 #counters {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
 }
-#counters div {
-  width: 33%;
-  text-align: left;
+
+.gameResult {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.nodis {
+  display: none;
 }
