@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#result {
+  height: 50px;
+  width: 80vw;
+  border: 1px solid #000;
+}
+
+#counters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#counters div {
+  width: 33%;
+  text-align: left;
+}

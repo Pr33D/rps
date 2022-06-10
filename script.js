@@ -1,51 +1,36 @@
 let rps = ["Rock", "Paper", "Scissors"];
 let wins = 0;
+document.querySelector("#wins").innerHTML = `Games won: ${wins}`;
+let draws = 0;
+document.querySelector("#draws").innerHTML = `Draw Games: ${draws}`;
 let looses = 0;
+document.querySelector("#looses").innerHTML = `Games lost: ${looses}`;
 
 function computerPlay() {
   let chance = Math.floor(Math.random() * 3);
-  console.log("Computer shows: " + rps[chance]);
   return rps[chance];
 }
 
-function oneRound(playerSelection, computerSelection) {
-  let playerChoice = "";
-  rps.forEach((element) => {
-    if (element.toLowerCase() === playerSelection.toLowerCase()) {
-      playerChoice = element;
-    }
-  });
-  console.log("You show: " + playerChoice);
-  if (playerChoice == computerSelection) {
-    console.log("Draw! Try again.");
+function playRound(playerSelection, computerSelection) {
+  let result = document.querySelector("#result");
+  result.innerHTML = `You show ${playerSelection}, the Computer shows ${computerSelection}<br>`;
+  if (playerSelection == computerSelection) {
+    result.innerHTML += `Draw!`;
     return;
   } else if (
-    (playerChoice == "Rock" && computerSelection == "Scissors") ||
-    (playerChoice == "Paper" && computerSelection == "Rock") ||
-    (playerChoice == "Scissors" && computerSelection == "Paper")
+    (playerSelection == "Rock" && computerSelection == "Scissors") ||
+    (playerSelection == "Paper" && computerSelection == "Rock") ||
+    (playerSelection == "Scissors" && computerSelection == "Paper")
   ) {
-    console.log(`You win! ${playerChoice} beats ${computerSelection}`);
+    result.innerHTML += `You win! ${playerSelection} beats ${computerSelection}`;
     return wins++;
   } else {
-    console.log(`You lose! ${computerSelection} beats ${playerChoice}`);
+    result.innerHTML += `You lose! ${computerSelection} beats ${playerSelection}`;
     return looses++;
   }
 }
 
-function game(rounds) {
-  for (let i = 0; i < rounds; i++) {
-    let choose = prompt("Rock, Paper or Scissors?");
-    let result = oneRound(choose, computerPlay());
-    console.log(wins + "won & " + looses + "lost");
-  }
-  if (wins > looses) {
-    console.log("You won the hole game!");
-  } else if (looses > wins) {
-    console.log("You lost this game!");
-  } else {
-    console.log("Draw - Try again :)");
-  }
-}
-
-let howManyRounds = prompt("How many Rounds?");
-let playGame = game(howManyRounds);
+let buttons = document.querySelectorAll(".btn");
+buttons.forEach((btn) =>
+  btn.addEventListener("click", () => playRound(btn.innerHTML, computerPlay()))
+);
