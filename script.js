@@ -1,3 +1,4 @@
+// Global variables
 let rps = ["Rock", "Paper", "Scissors"];
 let wins = 0;
 let draws = 0;
@@ -5,11 +6,13 @@ let looses = 0;
 let resultPop = document.querySelector(".gameResult");
 let endMsg = document.querySelector(".gameResultMsg");
 
+// Random Weapon for Computer
 function computerPlay() {
   let chance = Math.floor(Math.random() * rps.length);
   return rps[chance];
 }
 
+// One Round of RPS
 function playRound(playerSelection, computerSelection) {
   let result = document.querySelector("#result");
   result.innerHTML = `You show ${playerSelection}, the Computer shows ${computerSelection}<br>`;
@@ -32,6 +35,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// Reset all counters after Game
 function resetGame() {
   wins = 0;
   draws = 0;
@@ -41,6 +45,7 @@ function resetGame() {
   resultPop.classList.add("nodis");
 }
 
+// Live counters view in UI
 function showCounters() {
   document.querySelector("#wins").innerHTML = wins;
   document.querySelector("#draws").innerHTML = draws;
@@ -49,14 +54,17 @@ function showCounters() {
   else if (looses === 5) return winLoose("lost");
 }
 
+// Buttons for R-P or S + Run game round
 let buttons = document.querySelectorAll(".btn");
 buttons.forEach((btn) =>
   btn.addEventListener("click", () => playRound(btn.innerHTML, computerPlay()))
 );
 
+// Reset Game Button in game-ended-screen
 let resetBtn = document.querySelector("#reset");
 resetBtn.addEventListener("click", () => resetGame());
 
+// Text in game-ended-screen
 function winLoose(gameResult) {
   resultPop.classList.remove("nodis");
   if (gameResult === "won") endMsg.textContent = "You won this game!";

@@ -1,22 +1,52 @@
 body {
-  margin: 100px 0 0 0;
   display: flex;
+  align-items: center;
   justify-content: center;
-  text-align: center;
+  margin: 0;
+  height: 100vh;
+  background: #4499bb;
 }
+
 div {
   padding: 10px;
 }
 
-#result {
-  height: 50px;
-  width: 80vw;
+#result,
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
   border: 1px solid #000;
+  background: #ddd;
+}
+
+.container {
+  width: 100%;
 }
 
 #counters {
   display: flex;
+  justify-content: space-between;
+  padding: 10px 0 10px 0;
+}
+.btn-wrap {
+  display: flex;
   justify-content: space-around;
+}
+
+button {
+  border: 1px solid #000;
+  background: #ddd;
+  height: 100px;
+  width: 100px;
+  transition: 0.4s;
+  cursor: crosshair;
+}
+button:hover {
+  background: #aaa;
+  transform: scale(1.1);
+  box-shadow: 3px 3px 5px #000;
 }
 
 .gameResult {
