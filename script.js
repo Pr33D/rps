@@ -3,8 +3,9 @@ let rps = ["Rock", "Paper", "Scissors"];
 let wins = 0;
 let draws = 0;
 let looses = 0;
+let buttons = document.querySelectorAll(".btn");
 let resultPop = document.querySelector(".gameResult");
-let endMsg = document.querySelector(".gameResultMsg");
+let endMsg = document.querySelector("#gameResultMsg");
 
 // Random Weapon for Computer
 function computerPlay() {
@@ -43,6 +44,7 @@ function resetGame() {
   result.innerHTML = "";
   showCounters();
   resultPop.classList.add("nodis");
+  buttons.forEach((btn) => btn.removeAttribute("disabled"));
 }
 
 // Live counters view in UI
@@ -55,7 +57,6 @@ function showCounters() {
 }
 
 // Buttons for R-P or S + Run game round
-let buttons = document.querySelectorAll(".btn");
 buttons.forEach((btn) =>
   btn.addEventListener("click", () => playRound(btn.innerHTML, computerPlay()))
 );
@@ -69,4 +70,5 @@ function winLoose(gameResult) {
   resultPop.classList.remove("nodis");
   if (gameResult === "won") endMsg.textContent = "You won this game!";
   else endMsg.textContent = "You lost this game!";
+  buttons.forEach((btn) => btn.setAttribute("disabled", ""));
 }

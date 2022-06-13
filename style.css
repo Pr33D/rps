@@ -1,14 +1,24 @@
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.9em;
+}
+
 body {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
   height: 100vh;
-  background: #4499bb;
+  width: 100vw;
+  background: #606060;
 }
 
 div {
   padding: 10px;
+}
+h1,
+h2 {
+  text-align: center;
 }
 
 #result,
@@ -19,34 +29,43 @@ div {
   min-height: 50px;
   border: 1px solid #000;
   background: #ddd;
+  flex: 1 1 auto;
 }
 
-.container {
-  width: 100%;
+main {
+  width: 80vw;
+  box-shadow: 4px 4px 10px #000;
 }
 
 #counters {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 10px 0 10px 0;
+  margin-bottom: 100px;
+  gap: 10px;
 }
 .btn-wrap {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-button {
-  border: 1px solid #000;
+.btn {
+  border: 3px solid #000;
   background: #ddd;
   height: 100px;
   width: 100px;
-  transition: 0.4s;
   cursor: crosshair;
+  transition: 0.3s;
+  border-radius: 50%;
 }
-button:hover {
-  background: #aaa;
-  transform: scale(1.1);
-  box-shadow: 3px 3px 5px #000;
+.btn:hover {
+  background: #fff;
+  transform: scale(1.05);
+  border: 5px solid #008800;
+  box-shadow: 2px 2px 5px #000;
+  font-weight: bold;
 }
 
 .gameResult {
